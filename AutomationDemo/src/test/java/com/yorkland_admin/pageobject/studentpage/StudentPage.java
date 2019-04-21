@@ -1,5 +1,6 @@
 package com.yorkland_admin.pageobject.studentpage;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import com.yorkland_admin.pageobject.BasePageObject;
@@ -21,6 +22,7 @@ public class StudentPage extends BasePageObject{
 	private String textBox_InsuranceFee = "insuranceFee";
 	private String textBox_lunchFee = "lunchFee";
 	private String button_addStudent = "//button[@class='btn btn-lg btn-primary btn-block']";
+	private final static Logger logger = Logger.getLogger(StudentPage.class);
 	
 	public StudentPage(WebDriver driver, String baseUrl, String path) {
 		super(driver, baseUrl, path);
@@ -37,6 +39,7 @@ public class StudentPage extends BasePageObject{
 		if (firstName != "") {
 		firstNameWebControl.clear();
 		firstNameWebControl.enterText(firstName);
+		logger.info("Enter student first name : " + firstName);
 		}
 		return this;
 	}
@@ -46,6 +49,7 @@ public class StudentPage extends BasePageObject{
 		if(lastName != "") {
 		lastNameWebControl.clear();
 		lastNameWebControl.enterText(lastName);
+		logger.info("Enter student last name : " + lastName);
 		}
 		return this;
 	}
@@ -55,6 +59,7 @@ public class StudentPage extends BasePageObject{
 		if(dob != "") {
 		dobWebControl.clear();
 		dobWebControl.enterText(dob);
+		logger.info("Enter student date of birth : " + dob);
 		}
 		return this;
 	}
@@ -63,8 +68,9 @@ public class StudentPage extends BasePageObject{
 		TextBoxWebControl tuitionFeeWebControl = new TextBoxWebControl(driver, textBox_tuitionFee, findByName);
 		if(tuition != "") {
 		tuitionFeeWebControl.clear();
-		}
 		tuitionFeeWebControl.enterText(tuition);
+		logger.info("Enter student tuition : " + tuition);
+		}
 		return this;
 	}
 	
@@ -73,6 +79,7 @@ public class StudentPage extends BasePageObject{
 		if(credit != "") {
 		numberOfCreditWebControl.clear();
 		numberOfCreditWebControl.enterText(credit);
+		logger.info("Enter student number of the credit : " + credit);
 		}
 		return this;
 	}
@@ -80,6 +87,7 @@ public class StudentPage extends BasePageObject{
 	public StudentPage dropdown_selectStudentEntryTime(int entryTimeDropDownIndex) {
 		DropDownWebControl studentEntryTimeWebControl = new DropDownWebControl(driver,dropDown_studentEntryTime,findByName);		
 		studentEntryTimeWebControl.selectDropDownByIndext(entryTimeDropDownIndex);
+		logger.info("Select student entry time by index : " + entryTimeDropDownIndex);
 		return this;
 	}
 	
@@ -87,6 +95,7 @@ public class StudentPage extends BasePageObject{
 		if( entryTimeDropDown != "") {
 		DropDownWebControl studentEntryTimeWebControl = new DropDownWebControl(driver,dropDown_studentEntryTime,findByName);		
 		studentEntryTimeWebControl.selectDropDownByText(entryTimeDropDown);
+		logger.info("Select student entry time : " + entryTimeDropDown);
 		}
 		return this;
 	} 
@@ -96,6 +105,7 @@ public class StudentPage extends BasePageObject{
 		if(afterSchoolProgram != "") {
 		afterSchoolProgameWebControl.clear();
 		afterSchoolProgameWebControl.enterText(afterSchoolProgram);
+		logger.info("Enter student after school program : " + afterSchoolProgram);
 		}
 		return this;
 	}
@@ -105,6 +115,7 @@ public class StudentPage extends BasePageObject{
 		if(afterSchoolProgramFee != "") {
 		afterSchoolProgameFeeWebControl.clear();
 		afterSchoolProgameFeeWebControl.enterText(afterSchoolProgramFee);
+		logger.info("Enter student after school program fee: " + afterSchoolProgramFee);
 		}
 		return this;
 	}
@@ -114,6 +125,7 @@ public class StudentPage extends BasePageObject{
 		if(insuranceFee != "") {
 		insuranceFeeWebControl.clear();
 		insuranceFeeWebControl.enterText(insuranceFee);
+		logger.info("Enter student insurance fee : " + insuranceFee);
 		}
 		return this;
 	}
@@ -123,6 +135,7 @@ public class StudentPage extends BasePageObject{
 		if(lunchFee != "") {
 		lunchFeeWebControl.clear();
 		lunchFeeWebControl.enterText(lunchFee);
+		logger.info("Enter student lunch fee : " + lunchFee);
 		}
 		return this;
 	}
@@ -130,11 +143,14 @@ public class StudentPage extends BasePageObject{
 	public StudentPage click_addStudent(){
 		ButtonWebControl addStudentWebControl = new ButtonWebControl(driver,button_addStudent,findByXpath);
 		addStudentWebControl.clickButton();
+		logger.info("Click 'Add Student' button");
 		return this;
 	}
 	
 	public int select_randomStudentEntryTimeIndex() {
 		DropDownWebControl studentEntryTimeIndexWebControl = new DropDownWebControl(driver,dropDown_studentEntryTime,findByName);
-		return studentEntryTimeIndexWebControl.selectRandomDropDown();
+		int indexNumber = studentEntryTimeIndexWebControl.selectRandomDropDown();
+		logger.info("Select a random index number :" + indexNumber);
+		return indexNumber;
 	}
 }

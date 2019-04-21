@@ -1,11 +1,11 @@
 package com.yorkland_admin.pageobject.studentInfopage;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import com.yorkland_admin.pageobject.BasePageObject;
 import com.yorkland_admin.webcontrol.ButtonWebControl;
 import com.yorkland_admin.webcontrol.ListButtonsWebControl;
-import com.yorkland_admin.webcontrol.MessageWebControl;
 import com.yorkland_admin.webcontrol.TableWebControl;
 
 public class StudentInfoPage extends BasePageObject{
@@ -28,41 +28,47 @@ public class StudentInfoPage extends BasePageObject{
 	private String button_deleteCommentList = "//*[@id='commentBox']//child::input";
 	private String button_editBalanceList = "//*[@id='v-pills-tab1']//a[@class='btn btn-sm btn-warning']";
 	private String button_deleteBalanceList = "//*[@id='v-pills-tab1']//child::input";
-	private String assert_studentEditSuccessMessage = "//div[@class='alert alert-success']";
+	private final static Logger logger = Logger.getLogger(StudentInfoPage.class);
 	
 	public StudentInfoPage click_editStudentButton() {
 		ButtonWebControl editStudentWebControl = new ButtonWebControl(driver, button_editStudent, findByXpath, 5);
 		editStudentWebControl.clickButton();
+		logger.info("Click 'Edit' button for student");
 		return this;
 	}
 	
 	public StudentInfoPage click_deleteStudentButton() {
 		ButtonWebControl deleteStudentWebControl = new ButtonWebControl(driver, button_deleteStudent, findByXpath);
 		deleteStudentWebControl.clickButton();
+		logger.info("Click 'Delete' button for student");
 		return this;
 	}
 	
 	public StudentInfoPage click_addNewCommentButton() {
 		ButtonWebControl addNewCommentWebControl = new ButtonWebControl(driver, button_addNewComment, findByXpath);
 		addNewCommentWebControl.clickButton();
+		logger.info("Click 'Add New Comment' button");
 		return this;
 	}
 	
 	public StudentInfoPage click_entryFeeTab() {
 		ButtonWebControl entryFeeTabWebControl = new ButtonWebControl(driver, tab_entryFee, findByXpath);
 		entryFeeTabWebControl.clickButton();
+		logger.info("Click 'Entry Fee' tab");
 		return this;
 	}
 	
 	public StudentInfoPage click_balanceTab() {
 		ButtonWebControl balaceTabWebControl = new ButtonWebControl(driver, tab_balance, findByXpath ,3);
 		balaceTabWebControl.clickButton();
+		logger.info("Click 'Balance' tab");
 		return this;
 	}
 	
 	public StudentInfoPage click_addBalanceButton() {
 		ButtonWebControl addBalanceButtonWebControl = new ButtonWebControl(driver, button_addBalance, findById , 2);
 		addBalanceButtonWebControl.clickButton();
+		logger.info("Click 'Add Balance' Button");
 		return this;
 	}
 	
@@ -70,6 +76,7 @@ public class StudentInfoPage extends BasePageObject{
 		ListButtonsWebControl editCommentButtonsWebControl = new ListButtonsWebControl
 				(driver, button_editCommentList, findByXpath);
 		editCommentButtonsWebControl.click_numbersOfButton(eidtCommentNumber);
+		logger.info("Click 'Edit' button for comment row number : " + eidtCommentNumber);
 		return this;
 	}
 	
@@ -77,6 +84,7 @@ public class StudentInfoPage extends BasePageObject{
 		TableWebControl editCommentButtonsWebControl = new TableWebControl
 				(driver, button_editCommentList, findByXpath);
 		editCommentButtonsWebControl.click_randomItemFromTable();
+		logger.info("Click 'Edit' button for a random comment");
 		return this;
 	} 
 	
@@ -84,6 +92,7 @@ public class StudentInfoPage extends BasePageObject{
 		ListButtonsWebControl deletCommentButtonsWebControl = new ListButtonsWebControl
 				(driver, button_deleteCommentList, findByXpath);
 		deletCommentButtonsWebControl.click_numbersOfButton(deletCommentNumber);
+		logger.info("Click 'Delete' button for comment row number : " + deletCommentNumber);
 		return this;
 	}
 	
@@ -91,6 +100,7 @@ public class StudentInfoPage extends BasePageObject{
 		TableWebControl deletCommentButtonsWebControl = new TableWebControl
 				(driver, button_deleteCommentList, findByXpath);
 		deletCommentButtonsWebControl.click_randomItemFromTable();
+		logger.info("Click 'Delete' button for a random comment");
 		return this;
 	}
 	
@@ -98,6 +108,7 @@ public class StudentInfoPage extends BasePageObject{
 		ListButtonsWebControl editBalanceButtonsWebControl = new ListButtonsWebControl
 				(driver, button_editBalanceList, findByXpath);
 		editBalanceButtonsWebControl.click_numbersOfButton(number);
+		logger.info("Click 'Edit' button for balance row number : " + number);
 		return this;
 	}
 	
@@ -105,6 +116,7 @@ public class StudentInfoPage extends BasePageObject{
 		TableWebControl editBalanceButtonsWebControl = new TableWebControl
 				(driver, button_editBalanceList, findByXpath);
 		editBalanceButtonsWebControl.click_randomItemFromTable();
+		logger.info("Click 'Edit' button for a random balance");
 		return this;
 	}
 	
@@ -112,6 +124,7 @@ public class StudentInfoPage extends BasePageObject{
 		ListButtonsWebControl deletBalanceButtonsWebControl = new ListButtonsWebControl
 				(driver, button_deleteBalanceList, findByXpath);
 		deletBalanceButtonsWebControl.click_numbersOfButton(number);
+		logger.info("Click 'Delete' button for balance row number : " + number);
 		return this;
 	}
 	
@@ -119,12 +132,7 @@ public class StudentInfoPage extends BasePageObject{
 		TableWebControl deletBalanceButtonsWebControl = new TableWebControl
 				(driver, button_deleteBalanceList, findByXpath);
 		deletBalanceButtonsWebControl.click_randomItemFromTable();
+		logger.info("Click 'Delete' button for a random balance");
 		return this;
 	}
-	
-	public String assertion_StudentInfoSuccessEditMessage() {
-		MessageWebControl studentEditMessage = new MessageWebControl(driver, assert_studentEditSuccessMessage, findByXpath ,3);
-		return studentEditMessage.getTextMessage();
-	}
-	
 }

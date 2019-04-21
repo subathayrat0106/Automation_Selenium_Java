@@ -1,5 +1,6 @@
 package com.yorkland_admin.pageobject.addbalancepage;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import com.yorkland_admin.pageobject.BasePageObject;
@@ -9,6 +10,7 @@ import com.yorkland_admin.webcontrol.TextBoxWebControl;
 public class BalancePage extends BasePageObject{
 	
 	private WebDriver driver;
+	private final static Logger logger = Logger.getLogger(BalancePage.class);
 
 	public BalancePage(WebDriver driver, String baseUrl, String path) {
 		super(driver, baseUrl, path);
@@ -32,6 +34,7 @@ public class BalancePage extends BasePageObject{
 		if (tuition != "") {
 		updateTutition.clear();
 		updateTutition.enterText(tuition);
+		logger.info("Enter update tuition : " + tuition);
 		}
 		return this;
 	}
@@ -41,6 +44,7 @@ public class BalancePage extends BasePageObject{
 		if(credit != "") {
 		updatecreditWebControl.clear();
 		updatecreditWebControl.enterText(credit);
+		logger.info("Enter update credit : " + credit);
 		}
 		return this;
 	}
@@ -50,6 +54,7 @@ public class BalancePage extends BasePageObject{
 		if(afterSchoolFee != "") {
 		afterSchoolFeeWebControl.clear();
 		afterSchoolFeeWebControl.enterText(afterSchoolFee);
+		logger.info("Enter update after schoool fee : " + afterSchoolFee);
 		}
 		return this;
 	}
@@ -59,6 +64,7 @@ public class BalancePage extends BasePageObject{
 		if(insuranceFee != "") {
 		updateInsuranceFeeWebControl.clear();
 		updateInsuranceFeeWebControl.enterText(insuranceFee);
+		logger.info("Enter update insurance fee : " + insuranceFee);
 		}
 		return this;
 	}
@@ -68,6 +74,7 @@ public class BalancePage extends BasePageObject{
 		if(lunchFee != "") {
 		updateLunchFeeWebControl.clear();
 		updateLunchFeeWebControl.enterText(lunchFee);
+		logger.info("Enter update lunch fee : " + lunchFee);
 		}
 		return this;
 	}
@@ -75,6 +82,7 @@ public class BalancePage extends BasePageObject{
 	public BalancePage click_updateButton() {
 		ButtonWebControl updateButtonWebControl = new ButtonWebControl(driver, button_updateButton, findById);
 		updateButtonWebControl.clickButton();
+		logger.info("Click 'Update' button ");
 		return this;
 	}
 }

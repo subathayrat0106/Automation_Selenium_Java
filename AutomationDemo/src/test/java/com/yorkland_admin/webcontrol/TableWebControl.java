@@ -2,37 +2,41 @@ package com.yorkland_admin.webcontrol;
 
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class TableWebControl extends ListWebElementControl{
 
+	private final static Logger logger = Logger.getLogger(TableWebControl.class);
 	public TableWebControl(WebDriver driver, String tableIDtoFind, String findElementBy) {
 		super(driver, tableIDtoFind, findElementBy);
 	}
 	
 	
 	public void click_itemName(String name) {
+		try {
 		for (WebElement webElement : control) {
 			System.out.println(control.size());
 			if(webElement.getText().equals(name))
 				webElement.click();
+				logger.debug("click item : " + name);
 				break;
 		}	
-	}
-	
-	public boolean isItemExistInTable(String itemName) {
-		for (WebElement webElement : control) {
-			if(webElement.getText().equals(itemName))
-				return true;
+		}catch(Exception e) {
+			logger.error("Error occurs on click item : "  + e.getMessage());
 		}
-		return false;
 	}
 	
 	public void click_randomItemFromTable() {
+		try {
 		Random rand = new Random ();
 		int number = rand.nextInt(control.size());
-		control.get(number).click();;
+		control.get(number).click();
+		logger.debug("Click Random Number From The Table");
+		}catch(Exception e) {
+			logger.error("Error occurs on click random item from table " + e.getMessage());
+		}
 	}
 	
 

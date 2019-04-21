@@ -1,5 +1,6 @@
 package com.yorkland_admin.pageobject.commentpage;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import com.yorkland_admin.pageobject.BasePageObject;
@@ -9,6 +10,7 @@ import com.yorkland_admin.webcontrol.TextBoxWebControl;
 public class CommentPage extends BasePageObject{
 	
 	private WebDriver driver;
+	private final static Logger logger = Logger.getLogger(CommentPage.class);
 
 	public CommentPage(WebDriver driver, String baseUrl, String path) {
 		super(driver, baseUrl, path);
@@ -29,6 +31,7 @@ public class CommentPage extends BasePageObject{
 		if(title != "") {
 		commentTitleWebControl.clear();
 		commentTitleWebControl.enterText(title);
+		logger.info("Enter comment title : " + title);
 		}
 		return this;
 	}
@@ -38,6 +41,7 @@ public class CommentPage extends BasePageObject{
 		if(content != "") {
 		commentContentWebControl.clear();
 		commentContentWebControl.enterText(content);
+		logger.info("Enter comment content : " + content);
 		}
 		return this;
 	}
@@ -45,6 +49,7 @@ public class CommentPage extends BasePageObject{
 	public CommentPage click_submitButton() {
 		ButtonWebControl submitWebControl = new ButtonWebControl(driver, button_submit, findById);
 		submitWebControl.clickButton();
+		logger.info("Click 'Submit' Button");
 		return this;
 	}
 }
