@@ -16,7 +16,7 @@ public class Screenshot {
 	private WebDriver driver;
 	private String screenshotType;
 	private final static Logger logger = Logger.getLogger(Screenshot.class);
-	private final static String FILE_DIR = "/AutomationDemo/test-output/screenshot/";
+	private final static String FILE_DIR = "AutomationDemo/test-output/screenshot/";
 
 	public Screenshot(WebDriver driver, String screenshotType) {
 		this.driver = driver;
