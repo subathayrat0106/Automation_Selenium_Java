@@ -2,6 +2,7 @@ package com.yorkland_admin.testcase;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.yorkland_admin.general.ExcelManager;
@@ -10,6 +11,7 @@ import com.yorkland_admin.pageobject.assertion.Assertion;
 import com.yorkland_admin.pageobject.homepage.HomePage;
 import com.yorkland_admin.step.Login;
 
+@Listeners(com.yorkland_admin.general.TestListener.class)
 public class LoginTest extends BaseTest{
 	
 	Login login;

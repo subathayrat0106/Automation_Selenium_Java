@@ -15,7 +15,7 @@ import com.yorkland_admin.general.PropertiesManager;
 
 public class BaseTest {
 	
-	protected WebDriver driver;
+	protected static WebDriver driver;
 	private DriverFactory driverFactory;
 	private DriverManager driverManager;
 	private PropertiesManager prop;
