@@ -25,7 +25,7 @@ public class SignUpTest extends BaseTest{
 		
 		 login.click_signupLink();
 		 signUp.createAnRandomAdminUserAccount();
-		 Assert.assertEquals(AlertUtilites.ASSERT_SIGNUP + signUp.getFirstName() + " " + signUp.getLastName(), assertpage.assert_successAlert());
+		 Assert.assertEquals(AlertUtilites.ASSERT_SIGNUP + signUp.getFullName(), assertpage.assert_successAlert());
 	}
 			
 }

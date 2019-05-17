@@ -1,67 +1,34 @@
 package com.yorkland_admin.step;
 
+import com.github.javafaker.Faker;
 import com.yorkland_admin.general.ExcelManager;
 import com.yorkland_admin.general.ExcelUtilities;
-import com.yorkland_admin.general.RandomStringGenerator;
 
 public class BaseStep {
 	
 	protected ExcelManager excelFile; 
+	protected Faker faker;
 	private String firstName;
 	private String lastName;
 	
 	public BaseStep() {
 		excelFile = new ExcelManager(ExcelUtilities.EXCEL_FILEPATH);
+		faker = new Faker();
 	}
-			
-	protected String createRandomFirstName() {		
-		firstName = excelFile.randomDataFromExcelSheet(ExcelUtilities.SHEETNAME_RANDOM_NAME, 1);
+	
+	
+	protected String getRandomFirstName() {
+		String firstName = faker.name().firstName();
 		return firstName;
 	}
 	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	protected String createRandomLastName() {
-		lastName = excelFile.randomDataFromExcelSheet(ExcelUtilities.SHEETNAME_RANDOM_NAME, 2);
+	protected String getRandomLastName() {
+		String lastName = faker.name().lastName();
 		return lastName;
-	}
+	} 
 	
-	public String getLastName() {
-		return lastName;
-	}
-
-	protected String createRandomEmail() {
-		String email = RandomStringGenerator.get_random_string("Aphla", 5)
-				+ RandomStringGenerator.get_random_string("Numeric", 3) + "@gmail.com";
-		return email;
-	}
-
-	protected String createRandomUsername() {
-		String username = RandomStringGenerator.get_random_string("Mixed", 8);
-		return username;
-	}
-	
-	protected String createRandomPassword() {
-		String password = RandomStringGenerator.get_random_string("Mixed", 10);
-		return password;
-	}
-
-
-	protected String createRandomProgram() {
-		String program = RandomStringGenerator.get_random_string("Aphla", 4).toUpperCase();
-		return program;
-	}
-
-	protected String createRandomNumber(int digit) {
-		String number = RandomStringGenerator.get_random_string("Numeric", digit);
-		return number;
-	}
-	
-	protected String createRandomAlpha(int digit) {
-		String number = RandomStringGenerator.get_random_string("Aphla", digit);
-		return number;
+	public String getFullName() {
+		return firstName + " " + lastName;
 	}
 	
 	protected String createRandomDOB() {

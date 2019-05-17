@@ -26,23 +26,24 @@ public class SignUp extends BaseStep{
 	}
 	
 	public void createAnRandomAdminUserAccount() {
-		String username = createRandomUsername();
+		String username = faker.name().username();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_AUTO_GENERATOR_ADMIN, 1, 2, username);
 		
-		String password = createRandomPassword();
+		String password = faker.internet().password(6, 10, true);
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_AUTO_GENERATOR_ADMIN, 2, 2, password);
 		
-		String firstName = createRandomFirstName();
+		String firstName = getRandomFirstName();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_AUTO_GENERATOR_ADMIN, 3, 2, firstName);
 		
-		String lastName = createRandomLastName();
+		String lastName = getRandomLastName();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_AUTO_GENERATOR_ADMIN, 4, 2, lastName);
 		
-		String email = createRandomEmail();
+		String email = faker.internet().emailAddress();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_AUTO_GENERATOR_ADMIN, 5, 2, email);
 		
 		String adminCode = excelFile.getCellData(ExcelUtilities.SHEETNAME_AUTO_GENERATOR_ADMIN, 6, 2);
 		
 		createAnAdminUserAccount(username, password, firstName, lastName, email, adminCode);
 	}
+
 }

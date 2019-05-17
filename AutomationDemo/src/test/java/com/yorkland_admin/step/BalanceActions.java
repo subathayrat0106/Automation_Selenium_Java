@@ -83,11 +83,11 @@ public class BalanceActions extends BaseStep{
 		}
 		
 		private void randombalance() {
-			String tuition = createRandomNumber(4);
-			String credit = createRandomNumber(2);
-			String updateAfterSchoolFee = createRandomNumber(3);
-			String insuranceFee = createRandomNumber(3);
-			String lunchFee = createRandomNumber(3);
+			String tuition = Integer.toString(faker.number().numberBetween(19000, 20000));
+			String credit = Integer.toString(faker.number().numberBetween(1, 15));
+			String updateAfterSchoolFee = Integer.toString(faker.number().numberBetween(500, 3000));
+			String insuranceFee = Integer.toString(faker.number().numberBetween(500, 1200));
+			String lunchFee = Integer.toString(faker.number().numberBetween(500, 1500));
 			balance(tuition, credit, updateAfterSchoolFee, insuranceFee, lunchFee);
 		}
 		

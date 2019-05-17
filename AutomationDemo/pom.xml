@@ -5,7 +5,14 @@
 	<groupId>com.yorkalnd_admin</groupId>
 	<artifactId>AutomationDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>0.17.2</version>
+		</dependency>
 		<dependency>
 			<!-- This is the selenium dependency library -->
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -51,6 +58,17 @@
 			<version>2.6</version>
 		</dependency>
 
-
 	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M3</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>

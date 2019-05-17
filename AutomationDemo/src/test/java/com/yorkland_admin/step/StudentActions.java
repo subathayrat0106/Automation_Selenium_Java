@@ -13,6 +13,7 @@ public class StudentActions extends BaseStep{
 	private HomePage homePage;
 	private StudentInfoPage studentInfo;
 	private String firstName;
+	private String lastName;
 	private String nameOfStudentDelete;
 
 	public StudentActions(WebDriver driver) {
@@ -22,18 +23,18 @@ public class StudentActions extends BaseStep{
 	}
 	
 	public void addANewStudent() {
-		firstName = createRandomFirstName();
+		firstName = getRandomFirstName();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_STUDENT_INFO, 1, 2, firstName);
-		String lastName = createRandomLastName();
+		lastName = getRandomLastName();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_STUDENT_INFO, 2, 2, lastName);
 		String dob = createRandomDOB();
 		excelFile.setCellData(ExcelUtilities.SHEETNAME_STUDENT_INFO, 3, 2, dob);
-		String tuition = createRandomNumber(5);
-		String credit = createRandomNumber(2);
-		String afterSchoolProgram = createRandomProgram();
-		String afterSchoolFee = createRandomNumber(3);
-		String insuranceFee = createRandomNumber(3);
-		String lunchFee = createRandomNumber(3);
+		String tuition = Integer.toString(faker.number().numberBetween(19000, 20000));
+		String credit = Integer.toString(faker.number().numberBetween(5, 15));
+		String afterSchoolProgram = faker.lorem().fixedString(4).toUpperCase();
+		String afterSchoolFee = Integer.toString(faker.number().numberBetween(500, 1000));
+		String insuranceFee = Integer.toString(faker.number().numberBetween(100, 300));
+		String lunchFee = Integer.toString(faker.number().numberBetween(100, 500));
 		homePage.click_addStudentButton();	
 		student.enter_firstName(firstName);
 		student.enter_lastName(lastName);
@@ -98,5 +99,4 @@ public class StudentActions extends BaseStep{
 		student.enter_lunchFee(lunchFee);
 		student.click_addStudent();
 	}
-	
 }

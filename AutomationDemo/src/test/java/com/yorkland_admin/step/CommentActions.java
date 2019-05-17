@@ -19,8 +19,8 @@ public class CommentActions extends BaseStep{
 		}
 		
 		public void addNewComment() {
-			String commentTitle = createRandomAlpha(10);
-			String commentContent = createRandomAlpha(40);
+			String commentTitle = faker.lorem().characters(10);
+			String commentContent = faker.lorem().paragraph();
 			homepage.click_aRandomStudentFromTheTable();
 			studentInfo.click_addNewCommentButton();
 			enter_comment(commentTitle, commentContent);
@@ -33,8 +33,8 @@ public class CommentActions extends BaseStep{
 		}
 		
 		public void editAComment() {
-			String newCommentTitle = createRandomAlpha(10);
-			String newCommentContent = createRandomAlpha(40);
+			String newCommentTitle = faker.lorem().characters(10);
+			String newCommentContent = faker.lorem().paragraph();
 			homepage.click_aRandomStudentFromTheTable();
 			studentInfo.click_editCommentButton();
 			enter_comment(newCommentTitle, newCommentContent);

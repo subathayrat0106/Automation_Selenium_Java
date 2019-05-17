@@ -38,7 +38,7 @@ public class StundetActionsTest extends BaseTest {
 			
 		//using random data to create a new student
       	student.addANewStudent();	
-		Assert.assertEquals(assertpage.assert_successAlert(), student.getFirstName() + " " + student.getLastName() + 
+		Assert.assertEquals(assertpage.assert_successAlert(), student.getFullName() + 
 				AlertUtilites.ALERT_SUCCESS_ADD_STUDENT);
 	}
 	
